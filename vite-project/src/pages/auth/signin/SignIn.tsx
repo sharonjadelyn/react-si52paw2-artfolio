@@ -1,0 +1,86 @@
+import { useState, type ChangeEvent, type FormEvent } from "react"
+import { Button, Form } from "react-bootstrap"
+import { NavLink, useNavigate } from "react-router"
+import ApiClient from "../../../utils/ApiClient"
+
+
+interface SignInForm {
+    email : string,
+    password : string
+}
+
+
+function SignIn() {
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false)
+    const [form, setForm] = useState<SignInForm>({
+        email : "",
+        password : ""
+    })
+
+    const onHandleChange = (event : ChangeEvent<HTMLInputElement>) => {
+        const {value, name} = event.target
+        setForm({
+            ...form,
+            [name] : value
+        })
+    }
+
+    const onSubmit = async (event : FormEvent<HTMLFormElement>) => {
+            event.preventDefault();
+            setIsLoading(true)
+
+            try {
+                const response = await ApiClient.post('/users/signin', form)
+                console.log(response.data);
+
+                if(response.status === 200){
+                    // Redirect user ke halaman artworks
+                    localStorage.setItem("AuthToken", response.data.data.token)
+                    navigate('/artworks', {
+                        replace : true
+                    })
+                }
+                
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setIsLoading(false)
+            }
+    }
+
+    return<div className="container mx-auto">
+        <div className="d-flex justify-content-between mb-3">
+            <h1>Sign In</h1>
+        </div>
+        <div>
+            <Form onSubmit={onSubmit}>
+                <Form.Group className="mb-3" controlId="formEmail">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                        value={form.email}
+                        onChange={onHandleChange}
+                        name= "email"
+                        type="email" 
+                        placeholder="Email Address" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                        value={form.password}
+                        onChange={onHandleChange}
+                        name= "password"
+                        type="password" 
+                        placeholder="Password" />
+                </Form.Group>
+
+                <Button type="submit" variant="primary" disabled={isLoading}> 
+                    {isLoading ? "Loading..." : "Sign In"}
+                </Button>
+                <NavLink to="/">Sign Up</NavLink>
+            </Form>
+        </div>
+</div>
+}
+
+export default SignIn
