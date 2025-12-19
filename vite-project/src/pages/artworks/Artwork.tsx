@@ -56,7 +56,7 @@ function Artwork() {
             >Sign Out</span>
             
             <h1 className="text-center">Pameran Digital</h1>
-            <h6 className="text-center">Portofolio online khusus seniman digital untuk memamerkan karya.</h6>
+            <h6 className="text-center"><em>Portofolio online khusus seniman digital untuk memamerkan karya.</em></h6>
         </div>
 
         <div className="container mt-4">
