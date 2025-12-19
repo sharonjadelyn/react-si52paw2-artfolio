@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import ApiClient from "../../utils/ApiClient";
 import Card from 'react-bootstrap/Card';
 
@@ -34,10 +34,27 @@ function Artwork() {
         fetchArtworks();
     }, [fetchArtworks]);
 
+    const navigate = useNavigate();
+
+    const handleSignOut = () => {
+        localStorage.removeItem("AuthToken");
+        navigate("/", { replace: true });
+    };
+
 
     return (
     <>
-        <div className="container-fluid bg-primary text-white py-4">
+        <div className="container-fluid bg-primary text-white py-4 position-relative">
+            <span
+                onClick={handleSignOut}
+                role="button"
+                className="position-absolute top-0 end-0 m-3"
+                style={{
+                    fontSize: "14px",
+                    textDecoration: "underline"
+                }}
+            >Sign Out</span>
+            
             <h1 className="text-center">Pameran Digital</h1>
             <h6 className="text-center">Portofolio online khusus seniman digital untuk memamerkan karya.</h6>
         </div>
