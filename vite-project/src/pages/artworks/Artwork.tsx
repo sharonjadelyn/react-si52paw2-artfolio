@@ -36,12 +36,15 @@ function Artwork() {
 
 
     return (
-        <div className="container mx-auto">
+    <>
+        <div className="container-fluid bg-primary text-white py-4">
             <h1 className="text-center">Pameran Digital</h1>
-            <h6 className="text-center mb-4">Portofolio online khusus seniman digital untuk memamerkan karya.</h6>
+            <h6 className="text-center">Portofolio online khusus seniman digital untuk memamerkan karya.</h6>
+        </div>
 
+        <div className="container mt-4">
             <div className="d-flex justify-content-between mb-3">
-                <h4 className="text-center display">Karya-Karya Digital</h4>
+                <h4>Karya-Karya Digital</h4>
                 <NavLink to="/artworks/add-artwork" className="btn btn-primary">Upload Karya</NavLink>
             </div>
 
@@ -59,13 +62,19 @@ function Artwork() {
                                         alt={artwork.title} 
                                         style={{ height: "200px", objectFit: "cover" }}
                                     />
-                                    <Card.Body className="d-flex flex-column">
+                                    <Card.Body>
                                         <Card.Title>{artwork.title}</Card.Title>
                                         <Card.Text className="text-truncate">
                                             {artwork.description}
                                         </Card.Text>
-                                        <p className="mb-1"><small className="text-muted">{artwork.category}</small></p>
-                                        <p className="mb-2"><small className="text-muted">Oleh: {artwork.createdBy.username}</small></p>
+                                        <p className="mb-1">
+                                            <small className="text-muted">{artwork.category}</small>
+                                        </p>
+                                        <p className="mb-2">
+                                            <small className="text-muted">
+                                                Oleh: {artwork.createdBy.username}
+                                            </small>
+                                        </p>
                                     </Card.Body>
                                 </Card>
                             </NavLink>
@@ -74,7 +83,8 @@ function Artwork() {
                 </div>
             )}
         </div>
-    )
+    </>
+    );
 }
 
 export default Artwork;
