@@ -49,38 +49,61 @@ function SignIn() {
             }
     }
 
-    return<div className="container mx-auto">
-        <div className="d-flex justify-content-between mb-3">
-            <h1>Sign In</h1>
-        </div>
-        <div>
+    return (
+    <div className="container-fluid bg-primary min-vh-100 d-flex flex-column justify-content-center align-items-center">
+        <h1 className="text-white mb-4">Sign In</h1>
+
+        <div
+            className="bg-white p-4"
+            style={{
+                width: "420px",
+                borderRadius: "24px"
+            }}
+        >
             <Form onSubmit={onSubmit}>
-                <Form.Group className="mb-3" controlId="formEmail">
+                <Form.Group className="mb-3">
                     <Form.Label>Email</Form.Label>
                     <Form.Control
+                        name="email"
+                        type="email"
                         value={form.email}
                         onChange={onHandleChange}
-                        name= "email"
-                        type="email" 
-                        placeholder="Email Address" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                        value={form.password}
-                        onChange={onHandleChange}
-                        name= "password"
-                        type="password" 
-                        placeholder="Password" />
+                        style={{ borderRadius: "5px" }}
+                    />
                 </Form.Group>
 
-                <Button type="submit" variant="primary" disabled={isLoading}> 
-                    {isLoading ? "Loading..." : "Sign In"}
-                </Button>
-                <NavLink to="/">Sign Up</NavLink>
+                <Form.Group className="mb-4">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                        name="password"
+                        type="password"
+                        value={form.password}
+                        onChange={onHandleChange}
+                        style={{ borderRadius: "5px" }}
+                    />
+                </Form.Group>
+
+                <div className="text-center mb-2">
+                    <Button
+                        type="submit"
+                        variant="primary"
+                        disabled={isLoading}
+                        style={{
+                            borderRadius: "8px",
+                            padding: "6px 24px"
+                        }}
+                    >
+                        {isLoading ? "Loading..." : "Sign In"}
+                    </Button>
+                </div>
+
+                <div className="text-center">
+                    <NavLink to="/" style={{ fontSize: "14px" }}>Sign Up</NavLink>
+                </div>
             </Form>
         </div>
-</div>
+    </div>
+    )
 }
 
 export default SignIn
