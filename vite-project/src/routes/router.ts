@@ -56,6 +56,15 @@ const router = createBrowserRouter([
                         return component.default
                     }
                 }
+            },
+            {
+                path: "detail-artwork/:id",
+                lazy: {
+                    Component: async () => {
+                    const component = await import("../pages/artworks/DetailArtwork.tsx")
+                    return component.default
+                    }
+                }
             }
         ]
     }

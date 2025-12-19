@@ -33,7 +33,7 @@ function AddArtwork() {
         try {
             await ApiClient.post("/artworks", form);
             alert("Artwork berhasil ditambahkan");
-            navigate("/artworks"); // ⬅️ kembali ke list
+            navigate("/artworks");
         } catch (error: any) {
             alert(error.response?.data?.message || "Gagal menambahkan artwork");
         }
@@ -42,8 +42,8 @@ function AddArtwork() {
 
     return <div className="container mx-auto">
         <div className="d-flex justify-content-between mb-3">
-            <h4>Add Artwork Page</h4>
-            <NavLink to="/artworks" className="btn btn-primary">List Karya Seni</NavLink>
+            <h3>Tambah Karya</h3>
+            <NavLink to="/artworks" className="btn btn-primary">Kembali</NavLink>
         </div>
         <div>
             <Form onSubmit={handleSubmit}>

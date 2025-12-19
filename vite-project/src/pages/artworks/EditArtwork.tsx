@@ -79,8 +79,8 @@ function EditArtwork (){
 
     return <div className="container mx-auto">
         <div className="d-flex justify-content-between mb-3">
-        <h4> Edit Artwork Page</h4>
-        <NavLink to = "/artworks" className="btn btn-primary"> List Karya </NavLink>
+        <h3> Edit Karya</h3>
+        <NavLink to = {`/artworks/detail-artwork/${params.id}`} className="btn btn-primary"> Kembali </NavLink>
         </div>
 
         <div>
