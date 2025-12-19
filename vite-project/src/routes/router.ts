@@ -8,17 +8,17 @@ const router = createBrowserRouter([
                 index : true,
                 lazy : {
                     Component : async () => {
-                        const component = await import("../pages/auth/signup/SignUp.tsx")
+                        const component = await import("../pages/auth/signin/SignIn.tsx")
 
                         return component.default
                     }
                 }
             },
             {
-                path : "signIn",
+                path : "signUp",
                 lazy : {
                     Component : async () => {
-                        const component = await import("../pages/auth/signin/SignIn.tsx")
+                        const component = await import("../pages/auth/signup/SignUp.tsx")
 
                         return component.default
                     }

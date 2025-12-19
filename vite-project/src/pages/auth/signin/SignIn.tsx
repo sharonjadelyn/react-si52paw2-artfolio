@@ -98,7 +98,7 @@ function SignIn() {
                 </div>
 
                 <div className="text-center">
-                    <NavLink to="/" style={{ fontSize: "14px" }}>Sign Up</NavLink>
+                    <NavLink to="/signUp" style={{ fontSize: "14px" }}>Sign Up</NavLink>
                 </div>
             </Form>
         </div>

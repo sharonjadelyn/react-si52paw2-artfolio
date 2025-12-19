@@ -71,7 +71,7 @@ function SignUp() {
 
                 <Button type="submit" variant="primary">Sign Up</Button>
                 <br></br>
-                <NavLink to="/signin">Sign In</NavLink>
+                <NavLink to="/">Sign In</NavLink>
             </Form>
         </div>
 </div>
