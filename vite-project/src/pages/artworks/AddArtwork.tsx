@@ -32,10 +32,10 @@ function AddArtwork() {
     event.preventDefault();
         try {
             await ApiClient.post("/artworks", form);
-            alert("Artwork berhasil ditambahkan");
+            alert("Karya berhasil ditambahkan");
             navigate("/artworks");
         } catch (error: any) {
-            alert(error.response?.data?.message || "Gagal menambahkan artwork");
+            alert(error.response?.data?.message || "Gagal menambahkan karya");
         }
     };
 

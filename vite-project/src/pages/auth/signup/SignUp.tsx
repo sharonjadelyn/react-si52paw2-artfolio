@@ -1,7 +1,7 @@
 import { useState, type ChangeEvent, type FormEvent } from "react"
 import { Button, Form } from "react-bootstrap"
 import ApiClient from "../../../utils/ApiClient"
-import { NavLink } from "react-router"
+import { Navigate, NavLink, useNavigate } from "react-router"
 
 interface SignUpForm {
     username : string,
@@ -24,11 +24,14 @@ function SignUp() {
         })
     }
 
+    const navigate = useNavigate()
     const onSubmit = async (event : FormEvent<HTMLFormElement>) => {
             event.preventDefault();
             try {
                 const response = await ApiClient.post('/users/signup', form)
-                console.log(response);
+                
+                alert("Berhasil membuat akun, silakan sign in")
+                navigate("/")
                 
             } catch (error) {
                 console.log(error);
